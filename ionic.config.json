@@ -1,5 +1,7 @@
 {
   "name": "O Brangel é",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

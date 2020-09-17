@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +8,23 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  posts
+  constructor(private http: HttpClient) {
+    this.pegaDados();
+  }
+
+  pegaDados(){
+    this.http.get("https://obscure-sierra-83920.herokuapp.com/api/text")
+        .subscribe(response => {
+          this.posts = response
+          this.posts.reverse();
+        }, error => {
+          console.log(error);
+        });
+  }
+
+  ionViewWillEnter(){
+    this.pegaDados();
+  }
 
 }
